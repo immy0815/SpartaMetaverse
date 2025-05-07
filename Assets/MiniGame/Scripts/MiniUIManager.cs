@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class MiniUIManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI updateScoreText;
-    [SerializeField] GameObject resultPopup;
-    [SerializeField] GameObject howtoPopup;
-    [SerializeField] TMP_Text resultScoreText;
-    [SerializeField] TMP_Text bestScoreText;
+    [SerializeField] TextMeshProUGUI updateScoreText;   // 실시간 점수 텍스트
+    [SerializeField] GameObject resultPopup;            // 게임 결과 팝업
+    [SerializeField] GameObject howtoPopup;             // 게임 방법 팝업 (튜토리얼)
+    [SerializeField] TMP_Text resultScoreText;          // 최종 스코어 텍스트 (결과창)
+    [SerializeField] TMP_Text bestScoreText;            // 최고 스코어 텍스트 (결과창)
 
     private void Start()
     {
+        // 하이어라키 연결 안내
         if(updateScoreText == null)
             Debug.LogError("score text is null"); 
         if(resultPopup == null)
             Debug.LogError("resultPopup is null");
 
+        // 결과 팝업 미리 꺼두기
         resultPopup.gameObject.SetActive(false);
     }
 
