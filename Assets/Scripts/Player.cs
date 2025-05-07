@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         anim.SetBool("IsRun", rigid.velocity.sqrMagnitude > 0.1f);
     }
 
-    
+    // 상호작용 오브젝트와 상호작용
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (Input.GetKeyDown(KeyCode.Space)

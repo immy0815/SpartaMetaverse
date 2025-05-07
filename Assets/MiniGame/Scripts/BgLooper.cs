@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class BgLooper : MonoBehaviour
 {
+    public int numBGCount = 5;
+
     public int obstacleCount = 0; // 장애물의 개수
     public Vector3 obstacleLastPosition = Vector3.zero; // 마지막으로 배치된 장애물의 위치
 
@@ -28,6 +30,17 @@ public class BgLooper : MonoBehaviour
     {
         // 충돌한 객체의 이름을 디버그 로그에 출력
         Debug.Log("Triggered: " + collision.name);
+
+        // 충돌한 객체가 BackGround인지 확인
+        if (collision.CompareTag("BackGround"))
+        {
+            float widthOfBgObject = ((BoxCollider2D)collision).size.x;
+            Vector3 pos = collision.transform.position;
+
+            pos.x += widthOfBgObject * numBGCount;
+            collision.transform.position = pos;
+            return;
+        }
 
         // 충돌한 객체가 Obstacle인지 확인
         Obstacle obstacle = collision.GetComponent<Obstacle>();
